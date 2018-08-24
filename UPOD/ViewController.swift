@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  UPOD
-//
-//  Created by preeti goyal on 02/08/18.
-//  Copyright © 2018 preeti goyal. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -13,6 +5,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let objvc = self.storyboard!.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.navigationController!.pushViewController(objvc, animated: false)
+        
     }
 
     override func didReceiveMemoryWarning() {

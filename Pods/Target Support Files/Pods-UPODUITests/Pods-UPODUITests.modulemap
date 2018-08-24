@@ -1,0 +1,6 @@
+framework module Pods_UPODUITests {
+  umbrella header "Pods-UPODUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,21 +1,17 @@
-//
-//  AppDelegate.swift
-//  UPOD
-//
-//  Created by preeti goyal on 02/08/18.
-//  Copyright © 2018 preeti goyal. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    static var originalAppDelegate:AppDelegate!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        AppDelegate.originalAppDelegate = self
         // Override point for customization after application launch.
+        let UUIDValue = UIDevice.current.identifierForVendor!.uuidString // device id
+        UserDefaults.standard.set(UUIDValue, forKey: "UUIDValue")
+     //   print("UUID: \(UUIDValue)")
         return true
     }
 
@@ -40,7 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func sharedInstance() -> AppDelegate {
+        return AppDelegate.originalAppDelegate
+    }
+    func showNotification(_ text: String){
+        let alert = UIAlertView(title: "", message: text, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
+    
 
 }
 
